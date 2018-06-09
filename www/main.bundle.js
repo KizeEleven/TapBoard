@@ -230,7 +230,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "form {\n    background-color: rgb(214, 214, 214);\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-direction: column;\n        flex-direction: column;\n    padding: 1rem 0;\n}\n\nlabel {\n    text-transform: uppercase;\n    display: block;\n    font-size: 1.6rem;\n    font-weight: 700;\n    text-align: left;\n    font-size: 12px;\n    margin: 0.5rem 1rem;\n}\n\ninput {\n    border: 0.1rem solid #d1d1d1;\n    border-radius: .4rem;\n    box-shadow: none;\n    box-sizing: inherit;\n    height: 2rem;\n    margin: 0rem 1rem;\n}\n\n.btn-submit {\n    border-radius: .4rem;\n    color: #FFF;\n    background-color: #9b4dca;\n    width: 200px;\n    border: none;\n    height: 40px;\n    margin-top: 1rem;\n    font-size: 14px;\n    cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "form {\n    background-color: rgb(214, 214, 214);\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-direction: column;\n        flex-direction: column;\n    padding: 1rem 0;\n}\n\nlabel {\n    text-transform: uppercase;\n    display: block;\n    font-size: 1.6rem;\n    font-weight: 700;\n    text-align: left;\n    font-size: 12px;\n    margin: 0.5rem 1rem;\n}\n\ninput {\n    border: 0.1rem solid #d1d1d1;\n    border-radius: .4rem;\n    box-shadow: none;\n    box-sizing: inherit;\n    height: 2rem;\n    margin: 0rem 1rem;\n}\n\n.btn-submit {\n    border-radius: .4rem;\n    color: #FFF;\n    background-color: #9b4dca;\n    width: 200px;\n    border: none;\n    height: 40px;\n    margin-top: 1rem;\n    font-size: 14px;\n    cursor: pointer;\n}\n\n.error__message {\n    font-size: 16px;\n    color: rgb(221, 50, 50)\n}\n", ""]);
 
 // exports
 
@@ -243,7 +243,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/authentication/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form [formGroup]=\"formLogin\" novalidate>\n  <label for=\"email\">email</label>\n  <input name=\"email\" type=\"text\" formControlName=\"email\" #email />\n  <label for=\"password\">password</label>\n  <input name=\"password\" type=\"password\" formControlName=\"password\" #password />\n  <div>\n    <button class=\"btn-submit\" (click)=\"login(formLogin.value.email, formLogin.value.password)\">LOGIN</button>\n  </div>\n</form>\n"
+module.exports = "<form [formGroup]=\"formLogin\">\n  <span class=\"error__message\">{{ error }}</span>\n  <label for=\"email\">email</label>\n  <input name=\"email\" type=\"text\" formControlName=\"email\" #email />\n  <label for=\"password\">password</label>\n  <input name=\"password\" type=\"password\" formControlName=\"password\" #password />\n  <div>\n    <button class=\"btn-submit\" (click)=\"login(formLogin.value.email, formLogin.value.password)\">LOGIN</button>\n  </div>\n</form>\n"
 
 /***/ }),
 
@@ -274,6 +274,7 @@ var LoginComponent = (function () {
         this.http = http;
         this.formBuilder = formBuilder;
         this.router = router;
+        this.error = null;
         this.formLogin = this.formBuilder.group({
             email: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required],
             password: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required]
@@ -289,9 +290,14 @@ var LoginComponent = (function () {
         this.http.post('http://localhost:3000/api/login', {
             email: email,
             password: password
-        }).subscribe(function (response) {
+        })
+            .subscribe(function (response) {
             _this.setSession(response);
             _this.router.navigate(['/tap']);
+        }, function (err) {
+            if (err.status === 404) {
+                _this.error = 'Bad credentials';
+            }
         });
     };
     LoginComponent = __decorate([
@@ -317,7 +323,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "form {\n    background-color: rgb(214, 214, 214);\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-direction: column;\n        flex-direction: column;\n    padding: 1rem 0;\n}\n\nlabel {\n    text-transform: uppercase;\n    display: block;\n    font-size: 1.6rem;\n    font-weight: 700;\n    text-align: left;\n    font-size: 12px;\n    margin: 0.5rem 1rem;\n}\n\ninput {\n    border: 0.1rem solid #d1d1d1;\n    border-radius: .4rem;\n    box-shadow: none;\n    box-sizing: inherit;\n    height: 2rem;\n    margin: 0rem 1rem;\n}\n\n.btn-submit {\n    border-radius: .4rem;\n    color: #FFF;\n    background-color: #9b4dca;\n    width: 200px;\n    border: none;\n    height: 40px;\n    margin-top: 1rem;\n    font-size: 14px;\n    cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "form {\n    background-color: rgb(214, 214, 214);\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-direction: column;\n        flex-direction: column;\n    padding: 1rem 0;\n}\n\nlabel {\n    text-transform: uppercase;\n    display: block;\n    font-size: 1.6rem;\n    font-weight: 700;\n    text-align: left;\n    font-size: 12px;\n    margin: 0.5rem 1rem;\n}\n\ninput {\n    border: 0.1rem solid #d1d1d1;\n    border-radius: .4rem;\n    box-shadow: none;\n    box-sizing: inherit;\n    height: 2rem;\n    margin: 0rem 1rem;\n}\n\n.btn-submit {\n    border-radius: .4rem;\n    color: #FFF;\n    background-color: #9b4dca;\n    width: 200px;\n    border: none;\n    height: 40px;\n    margin-top: 1rem;\n    font-size: 14px;\n    cursor: pointer;\n}\n\n.error__message {\n    font-size: 16px;\n    color: rgb(221, 50, 50)\n}\n", ""]);
 
 // exports
 
@@ -330,7 +336,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/authentication/register/register.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form [formGroup]=\"formRegister\" novalidate>\n  <label for=\"firstname\">firstname</label>\n  <input name=\"firstname\" type=\"text\" formControlName=\"firstname\" #firstname />\n  <label for=\"lastname\">lastname</label>\n  <input name=\"lastname\" type=\"lastname\" formControlName=\"lastname\" #lastname />\n  <label for=\"email\">email</label>\n  <input name=\"email\" type=\"text\" formControlName=\"email\" #email />\n  <label for=\"password\">password</label>\n  <input name=\"password\" type=\"password\" formControlName=\"password\" #password />\n  <div>\n    <button class=\"btn-submit\" (click)=\"register(formRegister.value.firstname, formRegister.value.lastname, formRegister.value.email, formRegister.value.password)\">REGISTER</button>\n  </div>\n</form>\n  "
+module.exports = "<form [formGroup]=\"formRegister\" novalidate>\n  <span class=\"error__message\">{{ error }}</span>\n  <label for=\"firstname\">firstname</label>\n  <input name=\"firstname\" type=\"text\" formControlName=\"firstname\" #firstname />\n  <label for=\"lastname\">lastname</label>\n  <input name=\"lastname\" type=\"lastname\" formControlName=\"lastname\" #lastname />\n  <label for=\"email\">email</label>\n  <input name=\"email\" type=\"text\" formControlName=\"email\" #email />\n  <label for=\"password\">password</label>\n  <input name=\"password\" type=\"password\" formControlName=\"password\" #password />\n  <div>\n    <button class=\"btn-submit\" (click)=\"register(formRegister.value.firstname, formRegister.value.lastname, formRegister.value.email, formRegister.value.password)\">REGISTER</button>\n  </div>\n</form>\n  "
 
 /***/ }),
 
@@ -361,6 +367,7 @@ var RegisterComponent = (function () {
         this.http = http;
         this.formBuilder = formBuilder;
         this.router = router;
+        this.error = null;
         this.formRegister = this.formBuilder.group({
             firstname: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required],
             lastname: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required],
@@ -375,13 +382,16 @@ var RegisterComponent = (function () {
     };
     RegisterComponent.prototype.register = function (firstname, lastname, email, password) {
         var _this = this;
-        var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]().set('x-access-token', localStorage.getItem('token'));
+        if (!firstname || !lastname || !email || !password) {
+            this.error = 'All fields must by specified.';
+            return;
+        }
         this.http.post('http://localhost:3000/api/users', {
             firstname: firstname,
             lastname: lastname,
             email: email,
             password: password
-        }, { headers: headers })
+        })
             .subscribe(function (response) {
             _this.setSession(response);
             _this.router.navigate(['/tap']);

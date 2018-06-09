@@ -1,4 +1,5 @@
 <form [formGroup]="formRegister" novalidate>
+  <span class="error__message">{{ error }}</span>
   <label for="firstname">firstname</label>
   <input name="firstname" type="text" formControlName="firstname" #firstname />
   <label for="lastname">lastname</label>

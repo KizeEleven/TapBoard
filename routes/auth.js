@@ -13,8 +13,10 @@ const config = require('../config/token.js');
 const verifyToken = require('../models/verify.token');
 
 router.post('/users', (req, res) => {
-    const hashedPassword = bcrypt.hashSync(req.body.password, 8);
 
+    console.log(req);
+    const hashedPassword = bcrypt.hashSync(req.body.password, 8);
+    console.log(req);
     MongooseUser.create({
         firstname: req.body.firstname,
         lastname: req.body.lastname,

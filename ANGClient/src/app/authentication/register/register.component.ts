@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   formRegister: FormGroup;
+  error = null;
 
   constructor(private http: HttpClient, private formBuilder: FormBuilder, private router: Router) {
     this.formRegister = this.formBuilder.group({
@@ -28,13 +29,17 @@ export class RegisterComponent implements OnInit {
   }
 
   register(firstname, lastname, email, password) {
-    const headers = new HttpHeaders().set('x-access-token', localStorage.getItem('token'));
+    if(!firstname || !lastname || !email || !password) {
+      this.error = 'All fields must by specified.';
+      return;
+    }
+
     this.http.post('http://localhost:3000/api/users', {
       firstname,
       lastname,
       email,
       password
-    },{ headers })
+    })
     .subscribe((response) => {
       this.setSession(response);
       this.router.navigate(['/tap']);

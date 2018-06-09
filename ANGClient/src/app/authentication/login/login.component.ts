@@ -10,7 +10,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   formLogin: FormGroup;
-  
+  error = null;
+
   constructor(private http: HttpClient, private formBuilder: FormBuilder, private router: Router) {
     this.formLogin = this.formBuilder.group({
       email: ['', Validators.required ],
@@ -29,9 +30,17 @@ export class LoginComponent implements OnInit {
     this.http.post('http://localhost:3000/api/login', {
       email,
       password
-    }).subscribe((response) => {
-      this.setSession(response);
-      this.router.navigate(['/tap']);
-    });
+    })
+    .subscribe(
+      (response) => {
+        this.setSession(response);
+        this.router.navigate(['/tap']);
+      },
+      (err) => {
+        if(err.status === 404) {
+          this.error = 'Bad credentials';
+        }
+      }
+    );
   }
 }

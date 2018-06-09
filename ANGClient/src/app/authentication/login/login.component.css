@@ -35,3 +35,8 @@ input {
     font-size: 14px;
     cursor: pointer;
 }
+
+.error__message {
+    font-size: 16px;
+    color: rgb(221, 50, 50)
+}

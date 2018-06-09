@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./scores.component.css']
 })
 export class ScoresComponent implements OnInit {
-
   scores = [];
 
   constructor(private http: HttpClient, private router: Router) {
