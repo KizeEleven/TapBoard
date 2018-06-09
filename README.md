@@ -28,6 +28,9 @@ puis lancer l'application:
 $ npm start
 ```
 
+L'application est alors disponible sur http://localhost:3000
+
+
 ## Features
 
 AllYouCanTap est un jeu où il faut faire un maximum un point en spammant le bouton central. Le front utilise la techno Angular et
