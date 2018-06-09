@@ -43,11 +43,11 @@ propose les fonctionnalités suivantes:
 
 Le front est branché sur une API Node sécurisée. Voici la liste des routes disponibles:
 
-POST /users  :  Créé un compte utilisateur
-GET  /users  :  Renvoit les informations de l'utilisateur connecté
-POST /login  :  Connecte un utilisateur, renvoit un token avec une durée limitée
-GET  /tap    :  Créé un nouveau score pour un utilisateur (Authentification requise)
-GET  /scores :  Récupère la liste de tous les scores des joueurs par date décroissante (Authentification requise)
+* POST /users  :  Créé un compte utilisateur
+* GET  /users  :  Renvoit les informations de l'utilisateur connecté
+* POST /login  :  Connecte un utilisateur, renvoit un token avec une durée limitée
+* GET  /tap    :  Créé un nouveau score pour un utilisateur (Authentification requise)
+* GET  /scores :  Récupère la liste de tous les scores des joueurs par date décroissante (Authentification requise)
 
 
 
