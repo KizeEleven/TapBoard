@@ -1,0 +1,23 @@
+<header>
+  <section>
+    <app-username></app-username>
+    <p class="header__resume">YOU HAVE 10 SECONDS TO TAP! READY? STEADY ? TAP!</p>
+
+    <a routerLink="/scores" routerLinkActive="active">SCORES</a>
+    <app-logout></app-logout>
+  </section>
+</header>
+
+<div>
+  <div>
+      <img 
+        alt="Bouton" 
+        src="assets/{{ img }}"
+        (mousedown)="isPressed()"
+      />
+  </div>
+
+  <div>
+    <progress value="{{timer}}" min="0" max={{endingTimer}}></progress>
+  </div>
+</div>

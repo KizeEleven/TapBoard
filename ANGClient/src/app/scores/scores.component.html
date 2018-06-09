@@ -1,0 +1,19 @@
+<header>
+  <section>
+    <h1>score table</h1>
+    <p class="header__resume">Here is the list of scores</p>
+
+    <a routerLink="/tap" routerLinkActive="active">Tap</a>
+    <app-logout></app-logout>
+  </section>
+</header>
+  
+
+<section class="body__content">
+  <ul>
+    <li *ngFor="let score of scores">
+        <b>{{ score.points }}pts</b>
+        <span class="user">{{ score.user.firstname }} {{ score.user.lastname }} / {{ score.date | date:'yyyy/MM/dd HH:mm:ss' }}</span>
+    </li>
+  </ul>
+</section>

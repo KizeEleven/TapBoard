@@ -10,7 +10,7 @@ Définition des routes
 Chaque adresse est définie et une action spécifique y est associée.
 */
 // Page Home
-router.get('/', (req, res) => { // => Capter l'appel sur la page d'accueil
+router.get('/*', (req, res) => { // => Capter l'appel sur la page d'accueil
   res.render('index'); // => Renvoyer la vue "index.html"
 });
 

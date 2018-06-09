@@ -7,6 +7,7 @@ const bodyParser = require('body-parser'); // => Composant poru analyser les req
 const path = require('path'); // => Composant pour définir le dossier statique
 const ejs = require('ejs'); // => Composant pour le moteur de rendu
 const mongoose = require('mongoose');
+const cors = require('cors');
 //
 
 /*
@@ -17,13 +18,15 @@ const index = require('./routes/index');
 const auth = require('./routes/auth');
 const game = require('./routes/game');
 
+const app = express();
+app.use(cors());
 /* Configuration du serveur
 
 Une fois les composants du serveur importés, il faut les configurer pour qu'ils soient actifs.
 */
 mongoose.connect('mongodb://127.0.0.1:27017');
 // Définition du serveur et du port
-const app = express();
+
 app.set('port', (process.env.PORT || 3000));
 
 // Définition du dossier static
@@ -47,9 +50,9 @@ Définition des routes
 Chaque adresse (route) appelle un fichier JS spécifique.
 */  
 // Routes client
-app.use('/', index);
 app.use('/api', auth);
-app.use('/api', game)
+app.use('/api', game);
+app.use('/', index);
 
 /*
 Redirection 404
@@ -59,8 +62,6 @@ app.get('*', (req, res) => { // => Capter l'appel sur les pages inéxistantes
     res.render('404'); // => Renvoyer la vue "404.html"
 });
 //
-
-
 
 /*
 Lancer le serveur

@@ -1,0 +1,15 @@
+<header>
+  <section>
+      <h1>WELCOME ON <br><span>TAPBOARD</span></h1>
+      <p class="header__resume">LOGIN OR REGISTER TO START TAPPING</p>
+  </section>
+</header>
+
+<section class="body__content">
+  <h2 (click)="toggleLogin()">LOGIN</h2>
+  <app-login [hidden]="!displayLogin"></app-login>
+  <div>
+    <h2 (click)="toggleRegister()">REGISTER</h2>
+    <app-register [hidden]="!displayRegister"></app-register>
+  </div>
+</section>

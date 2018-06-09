@@ -13,7 +13,6 @@ const config = require('../config/token.js');
 const verifyToken = require('../models/verify.token');
 
 router.post('/users', (req, res) => {
-
     const hashedPassword = bcrypt.hashSync(req.body.password, 8);
 
     MongooseUser.create({
@@ -48,4 +47,13 @@ router.post('/login', (req, res) => {
         res.status(200).send({ auth: true, token: token });
     });
 });
+
+router.get('/users', verifyToken, (req, res) => {
+    MongooseUser.findOne({ _id: req.userId }, (err, user) => {
+        if (err) return res.status(500).send('Error');
+        if (!user) return res.status(404).send('User not found.');
+        res.status(200).send(user);
+    });
+});
+
 module.exports = router;

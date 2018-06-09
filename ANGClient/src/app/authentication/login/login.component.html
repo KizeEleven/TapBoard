@@ -1,0 +1,9 @@
+<form [formGroup]="formLogin" novalidate>
+  <label for="email">email</label>
+  <input name="email" type="text" formControlName="email" #email />
+  <label for="password">password</label>
+  <input name="password" type="password" formControlName="password" #password />
+  <div>
+    <button class="btn-submit" (click)="login(formLogin.value.email, formLogin.value.password)">LOGIN</button>
+  </div>
+</form>

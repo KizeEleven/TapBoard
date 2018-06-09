@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const MongooseUser = require('../models/user.mongoose');
 
 const ScoreSchema = new mongoose.Schema({
-    points: String,
+    points: Number,
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'

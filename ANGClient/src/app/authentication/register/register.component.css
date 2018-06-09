@@ -1,0 +1,37 @@
+form {
+    background-color: rgb(214, 214, 214);
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+}
+
+label {
+    text-transform: uppercase;
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-align: left;
+    font-size: 12px;
+    margin: 0.5rem 1rem;
+}
+
+input {
+    border: 0.1rem solid #d1d1d1;
+    border-radius: .4rem;
+    box-shadow: none;
+    box-sizing: inherit;
+    height: 2rem;
+    margin: 0rem 1rem;
+}
+
+.btn-submit {
+    border-radius: .4rem;
+    color: #FFF;
+    background-color: #9b4dca;
+    width: 200px;
+    border: none;
+    height: 40px;
+    margin-top: 1rem;
+    font-size: 14px;
+    cursor: pointer;
+}

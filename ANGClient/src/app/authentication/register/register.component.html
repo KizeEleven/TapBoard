@@ -1,0 +1,14 @@
+<form [formGroup]="formRegister" novalidate>
+  <label for="firstname">firstname</label>
+  <input name="firstname" type="text" formControlName="firstname" #firstname />
+  <label for="lastname">lastname</label>
+  <input name="lastname" type="lastname" formControlName="lastname" #lastname />
+  <label for="email">email</label>
+  <input name="email" type="text" formControlName="email" #email />
+  <label for="password">password</label>
+  <input name="password" type="password" formControlName="password" #password />
+  <div>
+    <button class="btn-submit" (click)="register(formRegister.value.firstname, formRegister.value.lastname, formRegister.value.email, formRegister.value.password)">REGISTER</button>
+  </div>
+</form>
+  

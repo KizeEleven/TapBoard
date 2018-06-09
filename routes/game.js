@@ -14,9 +14,7 @@ const config = require('../config/token.js');
 const verifyToken = require('../models/verify.token');
 
 router.post('/tap', verifyToken, (req, res) => {
-
     MongooseUser.findOne({ _id: req.userId }, (err, user) => {
-
         if (err) return res.status(500).send('Error');
         if (!user) return res.status(404).send('User not found.');
         MongooseScore.create({
@@ -28,7 +26,7 @@ router.post('/tap', verifyToken, (req, res) => {
             res.status(200).send({ status: 'ok' });
         });
     });
-})
+});
 
 router.get('/scores', verifyToken, (req, res) => {
     MongooseScore.find((err, scores) => {
