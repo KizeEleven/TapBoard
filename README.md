@@ -14,9 +14,18 @@ $ git clone git@github.com:KizeEleven/TapBoard.git
 
 Aller dans le dossier TapBoard puis lancer:
 
-
 ```bash
 $ npm install
+```
+
+Lancer la base de données avec:
+```bash
+$ sudo mongod 
+```
+
+puis lancer l'application:
+```bash
+$ npm start
 ```
 
 ## Features
